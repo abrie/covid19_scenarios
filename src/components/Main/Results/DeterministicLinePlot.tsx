@@ -31,6 +31,8 @@ import './DeterministicLinePlot.scss'
 
 const ASPECT_RATIO = 16 / 9
 
+const isAnimationActive = false
+
 const DATA_POINTS = {
   /* Computed */
   Exposed: 'exposed',
@@ -310,6 +312,7 @@ export function DeterministicLinePlot({
                     yAxisId={'mitigationStrengthAxis'}
                     fill={interval.color}
                     fillOpacity={0.25}
+                    isAnimationActive={isAnimationActive}
                   >
                     <Label value={interval.name} position="insideTopRight" fill="#444444"/>
                   </ReferenceArea>
@@ -319,7 +322,7 @@ export function DeterministicLinePlot({
                   <Line
                     key={d.key}
                     dot={false}
-                    isAnimationActive={false}
+                    isAnimationActive={isAnimationActive}
                     type="monotone"
                     strokeWidth={3}
                     dataKey={d.key}
@@ -330,7 +333,7 @@ export function DeterministicLinePlot({
                 ))}
 
                 {scatterToPlot.map((d) => (
-                  <Scatter key={d.key} dataKey={d.key} fill={d.color} name={d.name} />
+                  <Scatter key={d.key} dataKey={d.key} fill={d.color} name={d.name} isAnimationActive={isAnimationActive} />
                 ))}
               </ComposedChart>
             </>
